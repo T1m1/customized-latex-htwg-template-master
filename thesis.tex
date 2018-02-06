@@ -1,0 +1,81 @@
+ \documentclass[
+		11pt,
+		a4paper,
+        numbers=noendperiod,
+		toc=listof, %% Abbildungs- und Tabellenverzeichnis mit ins Inhaltsverzeichnis
+		bibliography=totoc %% Quellenverzeichnis mit ins Inhaltsverzeichnis
+		]{scrreprt}	 %% KOMA Script
+
+\input{preamble/packete}
+\input{preamble/optionen}
+\input{preamble/variablen}
+\input{preamble/highlighting}
+
+
+\begin{document}
+
+%% Nummerierung aus 
+\pagenumbering{gobble}
+
+%\include{important}
+
+\include{htwg/cover}
+\include{htwg/title}
+\include{htwg/abstract}
+\include{htwg/affidavit}
+
+\pagenumbering{roman}
+
+\tableofcontents
+
+
+%\newcounter{prepend}
+%\setcounter{prepend}{\value{page}} % save page count for appendix
+
+%% Starte Paginierung
+\cleardoublepage
+\pagenumbering{arabic}
+
+\include{01_introduction/introduction}
+
+%% basics
+\include{02_basics/basic_example}
+
+%% concept
+\include{03_design_concept/migration}
+  
+%% proof of concept
+\include{04_prototype/project}
+
+\include{05_evaluation/evaluation}
+
+\include{06_conclusion/valuation}
+
+\include{06_conclusion/future}
+
+\pagenumbering{Roman}
+%\setcounter{page}{\value{prepend} + 1} % continue roman page count for appendix
+
+\input{preamble/acronym}
+
+\listoffigures
+
+\begingroup
+\listoftables
+ \vspace{2cm}
+\let\clearpage
+
+
+\lstlistoflistings
+\endgroup
+
+\emergencystretch 1.5em
+
+%\nocite{*} % adds all references without citations to bibliography
+\bibliographystyle{apalike}
+\bibliography{appendix/citeulike}
+
+\include{appendix/anhang}
+
+\end{document}
+
